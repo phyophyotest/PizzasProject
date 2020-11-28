@@ -11,7 +11,11 @@ class PizzaController extends Controller
         return view('index');
     }
     function pizzas() {
-        return view('pizzas');
+        #send data to blade file
+        $pizzas=[
+            ["id"=>'1',"username"=>"phyu","pizza_name"=>"chicken","topping"=>"cheese","sauce"=>"tomato","price"=>20.5]
+        ];
+        return view('pizzas',['pizzas'=>$pizzas]);
     }
     function insert(Request $res){
       $validate= $res->validate([

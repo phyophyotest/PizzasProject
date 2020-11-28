@@ -15,17 +15,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td><button class="btn btn-sm btn-success">Order Complete</button></td>
-            <td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalLoginForm">Order Edit</button></td>
-          </tr>
-          
+          @foreach ($pizzas as $pizza)
+            <tr>
+              <th>{{$pizza['id']}}</th>
+              <td>{{$pizza['username']}}</td>
+              <td>{{$pizza['pizza_name']}}</td>
+              <td>{{$pizza['topping']}}</td>
+              <td>{{$pizza['sauce']}}</td>
+              <td>{{$pizza['price']}}</td>
+              <td><button class="btn btn-sm btn-success">Order Complete</button></td>
+              <td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalLoginForm">Order Edit</button></td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
       <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
