@@ -1,6 +1,9 @@
     @extends('layout.layout')
     
     @section('content')
+    @if (Session('delete'))
+        <div class="alert alert-danger mt-3 mb-3">{{Session('delete')}}</div> 
+    @endif
     <table class="table table-hover">
         <thead>
           <tr>
@@ -22,9 +25,9 @@
               <td>{{$pizza['pizza_name']}}</td>
               <td>{{$pizza['topping']}}</td>
               <td>{{$pizza['sauce']}}</td>
-              <td>{{$pizza['price']}}</td>
-              <td><button class="btn btn-sm btn-success">Order Complete</button></td>
-              <td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalLoginForm">Order Edit</button></td>
+              <td>{{$pizza['price']}}$</td>
+              <td><a href="{{route("delete",$pizza->id)}}" class="btn btn-sm btn-success">Order Complete</a></td>
+              <td><a href="#" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalLoginForm">Order Edit</a></td>
             </tr>
           @endforeach
         </tbody>

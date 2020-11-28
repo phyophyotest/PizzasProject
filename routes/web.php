@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PizzaController::class,'index'])->name('home');
 Route::get('/pizza', [PizzaController::class,'pizzas'])->name('pizza');
 Route::post('/',[PizzaController::class,'insert'])->name('insert');
+Route::get("/pizza/{id}",[PizzaController::class,'delete'])->name("delete");

@@ -12,9 +12,10 @@ class PizzaController extends Controller
     }
     function pizzas() {
         #send data to blade file
-        $pizzas=[
-            ["id"=>'1',"username"=>"phyu","pizza_name"=>"chicken","topping"=>"cheese","sauce"=>"tomato","price"=>20.5]
-        ];
+        // $pizzas=[
+        //     ["id"=>1,"username"=>"phyu","pizza_name"=>"chicken","topping"=>"cheese","sauce"=>"tomato","price"=>20.5]
+        // ];
+        $pizzas=Pizza::all();
         return view('pizzas',['pizzas'=>$pizzas]);
     }
     function insert(Request $res){
@@ -37,5 +38,12 @@ class PizzaController extends Controller
        }else{
             return back()->withErrors($validate);
        }
+    }
+    #delete function
+    function delete($id){
+        $pizza_delete=Pizza::find($id);
+        $pizza_delete->delete();
+        return back()->with("delete","$pizza_delete->username Order is deleted");
+       // return $pizza_delete;
     }
 }
